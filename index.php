@@ -104,3 +104,4 @@ switch ($accio) {
         include('vista/inici.php');
         break;
 }
+?>
