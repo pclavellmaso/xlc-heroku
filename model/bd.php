@@ -9,11 +9,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 // Connect to DB
 
-echo 'epnknjskkk'; exit();
+
 
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-$bd->set_charset("utf8");
+$conn->set_charset("utf8");
 
 if (mysqli_connect_errno()) {
     console_log('irror');
