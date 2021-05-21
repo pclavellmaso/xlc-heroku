@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/XLC/vista/footer.css">
+<link rel="stylesheet" href="vista/footer.css">
 
     </div><!--tancament del div 'content' del header (tanca tota la pàgina)-->
 
