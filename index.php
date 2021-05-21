@@ -5,6 +5,7 @@ include("model/debug.php");
 
 session_start();
 
+echo 'hola';
 
 if (isset($_GET['accio'])) {
     $accio = $_GET['accio'];
