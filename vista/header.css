@@ -23,10 +23,6 @@ a {
     color: black;
 }
 
-.pagina {
-    /*height: 100vh;*/
-}
-
 .capçalera_flex {
     display: flex;
     background-color: #FAEADB;
@@ -64,7 +60,6 @@ a {
     border: none;
     line-height: 25px;
     border-bottom: 2px solid #101819;
-
 }
 
 h1 h2 {
