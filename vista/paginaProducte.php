@@ -325,11 +325,7 @@ input[type="radio"] {
 
           
 
-                <div v-for="(descompte, index) in descomptes" class="descs_add">
-                    <input v-on:click="this.descompte=descompte" id="index" class="descompte" type="radio" name="punts_aplicats" v-model="descomptes[index] * 100); ?>" checked>
-                    <input class="desc_add" name="desc_add" type="text" value="<?php echo $descomptes[$i]; ?>" hidden>
-                    <label for="   ">Cap</label>
-                </div>
+                
 
 
         </div>
