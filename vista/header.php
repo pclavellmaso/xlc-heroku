@@ -47,7 +47,7 @@
 
             <div class="cap_esq">
 
-                <img class="logo" src="/XLC/vista/img/logo.png" alt="logo"></img>
+                <img class="logo" src="vista/img/logo.png" alt="logo"></img>
                 <a href="index.php"><h1 class="titol">Xarxa Local de Comerços</h1></a>
 
             </div>
