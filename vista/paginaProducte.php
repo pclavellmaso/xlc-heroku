@@ -278,7 +278,7 @@ input[type="radio"] {
     </div>
 
 </div><!-- contingut -->
-
+    </body>
 <script>    
 
     // VUEJS
