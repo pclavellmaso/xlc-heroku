@@ -28,7 +28,7 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
     <!-- VUE -->
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/vue.min.js"></script>
 
     <!-- AXIOS (ajax for vue) -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
