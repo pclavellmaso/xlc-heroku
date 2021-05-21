@@ -11,7 +11,7 @@ $query_builder = TRUE;
 
 
 
-$bd = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+$bd = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, 'heroku_c39c98ebe5f07fd');
 
 $bd->set_charset("utf8");
 
