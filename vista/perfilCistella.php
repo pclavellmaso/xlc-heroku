@@ -336,7 +336,7 @@ h2 {
                                                 echo '<div class="prodPromoFlex">
 
                                                     <div class="prod_esq">
-                                                        <img class="foto" src="/XLC/vista/img/'.$element['imatge'].'" alt="">
+                                                        <img class="foto" src="vista/img/'.$element['imatge'].'" alt="">
                                                     </div>
                             
                                                     <div class="prodPromo_dreta">
@@ -391,7 +391,7 @@ h2 {
                             echo '<div class="prodFlex">
 
                                 <div class="prod_img">
-                                    <img class="foto" src="/XLC/vista/img/'.$prod['imatge'].'" alt="">
+                                    <img class="foto" src="vista/img/'.$prod['imatge'].'" alt="">
                                     <div class="prod_noms">
                                         <p class="nom_prod">'.ucfirst($prod['nom']).'</p>
                                         <p class="nom_neg">'.ucfirst($nom_negoci[0]['nom']).'</p>

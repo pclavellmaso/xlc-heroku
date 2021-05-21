@@ -62,7 +62,7 @@
                     if (isset($_SESSION['nom'])) {
                         
                         echo '<div class="cistella">
-                            <img class="cistella_icon" src="/XLC/vista/img/cistella.png" alt="">
+                            <img class="cistella_icon" src="vista/img/cistella.png" alt="">
                             <div class="cistella_info">'.$_SESSION["cistella"]["qty"].'</div>
                         </div>'; 
                     }

@@ -88,17 +88,17 @@
     <div class=imgflex>
     
         <div class="img">
-            <img class="carousel" src="/XLC/vista/img/una-2.jpg" alt="una">
+            <img class="carousel" src="vista/img/una-2.jpg" alt="una">
 
         </div>
         
         <div class="img">
-            <img class="carousel" src="/XLC/vista/img/dos.jpg" alt="dos">
+            <img class="carousel" src="vista/img/dos.jpg" alt="dos">
 
         </div>
         
         <div class="img">
-            <img class="carousel" src="/XLC/vista/img/quatre.jpg" alt="tres">
+            <img class="carousel" src="vista/img/quatre.jpg" alt="tres">
 
         </div>
 
@@ -127,7 +127,7 @@
                         <div class="producte"><a href="index.php?accio=pagina_producte&id=<?php echo $prod['id']; ?>">
 
                             <div class="prod_amunt">
-                                <img class="foto" src="/XLC/vista/img/<?php echo $prod['imatge']; ?>" alt="">
+                                <img class="foto" src="vista/img/<?php echo $prod['imatge']; ?>" alt="">
                             </div>
                             <div class="prod_abaix">
                                 <div class=info>

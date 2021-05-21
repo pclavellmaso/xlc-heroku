@@ -81,7 +81,7 @@ img {
 
                 <div class="left">
 
-                    <img src="/XLC/vista/img/<?php echo $data_subpromo[$i]['imatge']; ?>" alt="">
+                    <img src="vista/img/<?php echo $data_subpromo[$i]['imatge']; ?>" alt="">
                 </div>
 
                 <div class="right">

@@ -181,7 +181,7 @@ input[type="radio"] {
     <div class="prodFlex">
 
         <div class="esquerre">
-            <img src="/XLC/vista/img/<?php echo $data_prod[0]['imatge']; ?>" alt="">
+            <img src="vista/img/<?php echo $data_prod[0]['imatge']; ?>" alt="">
         </div>
 
         <div class="dreta">
