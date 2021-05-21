@@ -11,9 +11,9 @@ $query_builder = TRUE;
 
 
 
-$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+$bd = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-$conn->set_charset("utf8");
+$bd->set_charset("utf8");
 
 if (mysqli_connect_errno()) {
     console_log('irror');
