@@ -8,13 +8,13 @@
 }
 
 .wrap {
-    width: 90%;
+    width: 96%;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    padding: 60px 0px;
+    padding: 1em 0;
 }
 
 .header {
@@ -23,7 +23,9 @@
 
 .h1h {
     margin: auto;
-    padding: 30px 0px 100px 0px;
+    padding-bottom: 2em;
+    padding-top: 1em;
+    font-size: 2em!important;
 }
 
 .h1f {
@@ -32,68 +34,98 @@
 }
 
 .h2 {
-    margin-bottom: 60px;
+    margin-bottom: 1em!important;
+    width: 100%;
+    float: left;
+    font-size: 1.5em!important;
 }
 
-h3 {
-    margin-bottom: 20px;
-}
-
-h4 {
-    margin-top: 20px;
+h5 {
+    margin-bottom: 0!important;
+    font-size: 1em!important;
 }
 
 .registreLogin {
     display: flex;
+    justify-content: space-between;
     width: 100%;
 }
 
 .registre, .login {
-    flex: 0 0 50%;
+    flex: 0 0 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .inputText {
-    margin-bottom: 15px;
+    margin-bottom: 1.5em;
     height: 30px;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid brown;
     width: 100%;
-    font-size: 18px;
-}
-
-input:nth-child(1){
-    margin-top: 60px;
+    font-size: 1em;
 }
 
 form {
     width: 100%;
-    padding: 0px 80px;
 }
 
 #info_negoci {
   display: none;
 }
 
-button {
-    float: right;
-    font-size: 25px;
-    background-color: transparent;
+.btn {
     border: none;
-    transition-duration: 0.2s;
+    color: white!important;
+    padding: 1em!important;
+    border-radius: 2px!important;
+    margin-left: auto;
+    position: relative;
+    background: #EFA243!important;
+    display: block;
     cursor: pointer;
+    transition: 0.4s!important;
 }
 
-button:hover {
-    font-size: 28px;
+.btn:hover {
+    transform: scale(1.06); 
 }
 
 .error {
     color:red;
     margin-bottom: 5px;
+}
+
+.tipus_usuari {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1em;
+}
+
+textarea {
+    background: transparent;
+    border: 1px solid brown;
+}
+
+.nouRegistre {
+    padding: 1em;
+    cursor: pointer;
+    background: #EFA243!important;
+    border-radius: 2px!important;
+    color: white!important;
+    transition: 0.4s!important;
+    float: right;
+    margin-top: 2.5em;
+}
+
+.nouRegistre:hover {
+    transform: scale(1.06); 
+}
+
+.nouRegistre_wrap {
+    width: 100%;
 }
 
 </style>
@@ -116,15 +148,12 @@ button:hover {
 
                 echo '<div class="registre">
 
-                    <h3>Registre completat!</h3>
-                    <h1>Inicia sessió per descobrir la fantasia de l\'artesania</h1>
-                    <br>
-                    <br>
-                    <br>';
+                    <h2 class="h2">Registre completat!</h2>
+                    <p>Inicia sessió per descobrir nous productes i promocions especials!</p>';
 
                     unset($_SESSION['registre']);
 
-                    echo '<a href="index.php?accio=registreLogin.php">Registrar-me de nou</a>
+                    echo '<div class="nouRegistre_wrap"><a class="nouRegistre" href="index.php?accio=registreLogin.php">Registrar-me de nou</a></div>
 
                 </div>';
 
@@ -137,65 +166,60 @@ button:hover {
                     <form id="formulariRegistre" method="post" action="index.php?accio=val_registreLogin">';
 
                         if(isset($_SESSION['signin_inc'])) {
-                            echo "<div style='color: red;'>El correu i/o el nom ja han estat registrats</div>
-                            <br>";
+                            echo "<div style='color: red;'>El correu i/o el nom ja han estat registrats</div>";
                         }
                     
 
-                        echo '<div>
-                            <h3>Em registro com a:</h3>
-                            <input type="radio" id="client_radio_reg" name="tipus_usuari_reg" value="client" checked="checked">
-                            <label for="client_radio_reg">Client</label><br><br>
-                            <input type="radio" id="negoci_radio_reg" name="tipus_usuari_reg" value="negoci">
-                            <label for="negoci_radio_reg">Negoci</label>
+                        echo '<div class="tipus_usuari">
+                            <div>
+                                <input type="radio" id="client_radio_reg" name="tipus_usuari_reg" value="client" checked="checked">
+                                <label for="client_radio_reg">Consumidor</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="negoci_radio_reg" name="tipus_usuari_reg" value="negoci">
+                                <label for="negoci_radio_reg">Comerciant</label>
+                            </div>
                         </div>
                 
                         <div class="input-group">
-                            <h4>Nom d\'usuari</h4><br>
-                            <input class="inputText" type="text" name="username">
+                            
+                            <input class="inputText" type="text" name="username" placeholder="Nom d\'usuari">
                         </div>
                         
                         <div class="input-group">
-                            <h4>Correu electrònic</h4><br>
-                            <input class="inputText" type="email" name="email">
+                            <input class="inputText" type="email" name="email" placeholder="Correu electrònic">
                         </div>
                         
                         <div class="input-group">
-                            <h4>Contrasenya</h4><br>
-                            <input class="inputText" id="password_reg" type="password" name="password_1">
+                            <input class="inputText" id="password_reg" type="password" name="password_1" placeholder="Contrasenya">
                         </div>
                         
                         <div class="input-group">
-                            <h4>Confirma la contrasenya</h4><br>
-                            <input class="inputText" type="password" name="password_2">
+                            <input class="inputText" type="password" name="password_2" placeholder="Confirma la contrasenya">
                         </div>
 
                         <!-- Info addicional negoci -->
                         <div id="info_negoci">
 
                             <div class="input-group camps_negoci">
-                                <h4>Nom del negoci</h4><br>
-                                <input class="inputText" type="text" name="nom_negoci">
+                                <input class="inputText" type="text" name="nom_negoci" placeholder="Nom del negoci">
                             </div>
 
                             <div class="input-group camps_negoci">
-                                <h4>Descripció del negoci</h4><br>
-                                <input class="inputText" type="text" name="desc_negoci">
+                                <!--<input class="inputText" type="text"  placeholder="Descripció del negoci">-->
+                                <textarea rows="5" cols="40" name="desc_negoci">Descripció del negoci</textarea>
                             </div>
 
                             <div class="input-group camps_negoci">
-                                <h4>Població</h4><br>
-                                <input class="inputText" type="text" name="poblacio">
+                                <input class="inputText" type="text" name="poblacio" placeholder="Població">
                             </div>
 
                             <div class="input-group camps_negoci">
-                                <h4>CP</h4><br>
-                                <input class="inputText" type="int" name="cp">
+                                <input class="inputText" type="int" name="cp" placeholder="Codi Postal">
                             </div>
 
                             <div class="input-group camps_negoci">
-                                <h4>Telèfon</h4><br>
-                                <input class="inputText" type="text" name="telefon">
+                                <input class="inputText" type="text" name="telefon" placeholder="Telèfon">
                             </div>
 
                         </div>
@@ -223,24 +247,21 @@ button:hover {
                 <?php
                     
                     if(isset($_SESSION['login_inc'])) {
-                        echo "<div style='color: red;'>El Correu i la contrasenya no coincideixen</div>
-                        <br>";
+                        echo "<div style='color: red;'>El Correu i la contrasenya no coincideixen</div>";
                     }
                 
                 ?>
 
                 <div class="input-group">
-                    <h4>Correu electrònic</h4><br>
-                    <input class="inputText" type="text" name="email">
+                    <input class="inputText" type="text" name="email" placeholder="Correu electrònic">
                 </div>
 
                 <div class="input-group">
-                    <h4>Contrasenya</h4><br>
-                    <input class="inputText" type="password" name="password">
+                    <input class="inputText" type="password" name="password" placeholder="Contrasenya">
                 </div>
 
                 <div class="input-group">
-                    <button type="submit" class="btn" name="login_user">Inicia sessió!</button>
+                    <button type="submit" class="btn" name="login_user">Iniciar sessió</button>
                 </div>
 
             </form>  
@@ -264,10 +285,6 @@ button:hover {
 
 
 
-
-
-
-
 <script>
 
     jQuery(document).ready(function() {
@@ -275,12 +292,14 @@ button:hover {
         // Registre
         jQuery("#client_radio_reg").on('click', function() {
 
+            jQuery('html,body').animate({ scrollTop: jQuery("#formulariRegistre").offset().top }, 'slow')
             jQuery("#info_negoci").css('display', 'none');
         });
         
         jQuery("#negoci_radio_reg").on('click', function() {
-
-            jQuery("#info_negoci").css('display', 'block');
+            
+            jQuery('html,body').animate({ scrollTop: jQuery("#formulariRegistre").offset().top }, 'slow')
+            jQuery("#info_negoci").css('display', 'block')
         });
 
         // Validacio jQuery Registre

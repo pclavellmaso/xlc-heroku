@@ -1,5 +1,23 @@
-<link rel="stylesheet" href="vista/footer.css">
+<link rel="stylesheet" href="/XLC/vista/footer.css">
 
+<style>
+
+    .footer_flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 30px;
+        background: #FDFDFD;
+        border-top: 1px solid gray;
+    }
+
+    .esq_flex .dreta_flex {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+</style>
     </div><!--tancament del div 'content' del header (tanca tota la pàgina)-->
 
     <div class="session">

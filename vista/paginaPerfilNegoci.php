@@ -6,11 +6,6 @@
     box-sizing: border-box;
 }
 
-h4 {
-    font-size: 1em!important;
-    margin-bottom: 0.5em!important;
-}
-
 #contentFlex {
     width: 100%;
     display: flex;
@@ -19,8 +14,8 @@ h4 {
 }
 
 #contingut {
-    border-radius: 2px;
-    padding: 1em;
+    border-radius: 5px;
+    margin-top: 1em;
 }
 
 #leftFlex {
@@ -30,8 +25,12 @@ h4 {
 
 .menu_item {
     cursor: pointer;
-    font-size: 1.3em;
-    margin-bottom: 0.5em;
+    font-size:20px;
+    margin-bottom: 30px;
+}
+
+.menu_item:hover {
+    font-weight: bold;
 }
 
 #rightFlex {
@@ -116,10 +115,6 @@ h5 {
     cursor: pointer;
 }
 
-.seccio:hover h4 {
-    font-weight: bold;
-}
-
 .close {
     background: transparent;
     border: none;
@@ -132,8 +127,24 @@ h5 {
     vertical-align: text-top;
 }
 
-.seccio > h4 {
-    font-weight: bold;
+/* Pàgina inici */
+
+h2, h3 {
+    text-align: center;
+}
+
+.resum_flex {
+    justify-content: space-around;
+}
+
+.resum_activitat {
+    background: rgba(239, 162, 67, 0.4);
+    padding: 4em;
+}
+
+.negoci_funcions {
+    background: rgba(239, 162, 67, 0.6);
+    padding: 4em;
 }
 
 .label-wrap {
@@ -142,9 +153,6 @@ h5 {
 
 </style>
 
-
-
-<?php include "header.php"; ?>
 
 <?php
 
@@ -178,24 +186,14 @@ h5 {
         unset($_SESSION['eliminar_promo']);
     }
 
-    if (isset($_SESSION['insert'])) {
+    if(isset($_SESSION['pass_err'])) {
         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Producte afegit correctament al catàleg</strong>
+            <strong>Error a l\'actualitzar la contrasenya</strong> Contrasenya actual invàlida
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true"><i data-feather="x"></i></span>
             </button>
         </div>';
-        unset($_SESSION['insert']);
-    }
-
-    if (isset($_SESSION['eliminar_producte'])) {
-        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Producte eliminat correctament</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"><i data-feather="x"></i></span>
-            </button>
-        </div>';
-        unset($_SESSION['eliminar_producte']);
+        unset($_SESSION['pass_err']);
     }
 
 ?>
@@ -203,14 +201,6 @@ h5 {
 <div id="contentFlex">
 
     <div id="leftFlex">
-
-        <?php
-            
-            if(isset($_SESSION['pass_err']) && $_SESSION['pass_err'] == 'yes') {
-
-                echo '<p style="color: red;">Error a l\'actualitzar la contrasenya: Contrasenya actual invàlida</p>';
-            }
-        ?>
 
         <div class="label-wrap">
             <i data-feather="menu"></i><span id="select-label" class="menu">MENÚ</span><br><br>
@@ -234,7 +224,7 @@ h5 {
 
             <div class="select-hide" id="order">
 
-                <div id="dades_personals" class="seccio">
+                <div class="seccio" id="dades_personals">
                     <h4>Dades personals</h4>
                     <p>Consulta i/o edita les teves dades personals</p>
                 </div>
@@ -248,26 +238,21 @@ h5 {
                     </br>
 
                     <div id="consul_prods" class="seccio">
-                        <h4>Catàleg de productes</h4>
+                        <h4>Consultar productes</h4>
                         <p>Consulta els productes atuals del catàleg, modifica o elimina els existents i afegeix-ne de nous</p>
                     </div>
-                    
+
                     <div id="consul_proms" class="seccio">
-                        <h4>Promocions</h4>
-                        <p>Consulta les promocions actives i creen de noves.</p>
+                        <h4>Consultar promocions</h4>
+                        <p>Consulta les promocions actives i creen de noves</p>
                     </div>
 
                 <?php }else { ?>
                     
-                    <div id="compres" class="seccio">
-                        <h4>Registre de compres</h4>
-                        <p>Consulta el teu registre de compres realitzades i el corresponent guany o consum de punts en cadascuna</p>
-                    </div>
+                    <h4 class="seccio" id="compres" class="menu_item">Registre de compres</h4>
                     </br>
-                    <div id="punts" class="seccio">
-                        <h4>Els meus punts</h4>
-                        <p>Consulta els punts totals aconseguits i els actuals. Descobreix quins descomptes tens desbloquejats</p>
-                    </div>
+                    <h4 class="seccio" id="punts" class="menu_item">Els meus punts</h4>
+
                 <?php } ?> 
 
             </div>
@@ -275,9 +260,67 @@ h5 {
 
     </div>
 
+    <?php
+
+        $usuari_id = $_SESSION['usuari_id'];
+
+        // Consulta de productes catalogats
+        $cons_prods = "SELECT p.id FROM producte p WHERE p.negoci_id = u.id and u.id = $usuari_id";
+        $res_prods = $bd->query($cons_prods);
+        if ($res_prods) {
+            $data_prods = $res_prods->fetch_all(MYSQLI_ASSOC);
+            $num_prods = count($data_prods);
+        } else {
+            $num_prods = 0;
+        }
+
+        // Consulta de promocions actives
+        $cons_promos = "SELECT p.id FROM promocio p, usuari u WHERE p.negoci_id = u.id and u.id = $usuari_id and p.data_fi > CURDATE()";
+        $res_promos = $bd->query($cons_promos);
+        if ($res_promos) {
+            $data_promos = $res_promos->fetch_all(MYSQLI_ASSOC);
+            $num_promos = count($data_promos);
+        } else {
+            $num_promos = 0;
+        }
+        
+        // Consulta de productes venuts
+        $cons_venuts = "SELECT n.productes_venuts FROM negoci n, usuari u WHERE n.usuari_id = u.id and u.id = ".$_SESSION['usuari_id']."";
+        $res_venuts = $bd->query($cons_venuts);
+        $data_venuts = $res_venuts->fetch_all(MYSQLI_ASSOC);
+        $num_venuts = $data_venuts[0]['productes_venuts'];
+        
+        if ($num_venuts == 1) {
+            $txt_venuts = ' Producte venut';
+        } else {
+            $txt_venuts = ' Productes venuts';
+        }
+
+    ?>
+
     <div id="rightFlex">
 
         <div id="contingut">
+
+            <div class="resum_activitat">
+                <h2>RESUM ACTIVITAT</h2>
+
+                <div class="resum_flex d-flex pt-5">
+                    <div class="productes">
+                        <h4><?php echo $num_prods; ?> Productes catalogats</h4>
+                        <h4><?php echo $num_promos; ?> Promocions actives</h4>
+                    </div>
+                    <div class="beneficis">
+                        <h4><?php echo $num_venuts . $txt_venuts ?></h4>
+                        <h4><?php echo 'X'; ?>€ de benefici obtingut</h4>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="negoci_funcions">
+                <h3>AMB EL COMPTE DE NEGOCI POTS</h3>
+            </div>
+
         </div>
 
     </div>
@@ -288,9 +331,10 @@ h5 {
 <script>
 
     // Per defecte carrega la pàgina de les dades personals
-    $.ajax({url: "index.php?accio=perfil_personal", success: function(result){
+
+    /*$.ajax({url: "index.php?accio=perfil_personal", success: function(result){
         $("#contingut").hide().html(result).fadeIn(400);
-    }});
+    }});*/
 
     jQuery(document).ready(function() {
 
@@ -363,9 +407,4 @@ h5 {
 
     });
 
-    feather.replace()
-
 </script>
-
-<?php include "footer.php";?>
-

@@ -1,9 +1,11 @@
 <?php
 
+session_start();
+
 include("model/bd.php");
 include("model/debug.php");
 
-session_start();
+
 
 
 if (isset($_GET['accio'])) {
@@ -38,7 +40,11 @@ switch ($accio) {
 
     case 'perfil_personal':
         include('vista/perfilPersonal.php');
-        break; 
+        break;
+        
+    case 'edita_personal':
+        include('vista/edita_dadesPersonals.php');
+        break;
 
     case 'act_dadesPersonals':
         include('controlador/act_dadesPersonals.php');
@@ -46,6 +52,10 @@ switch ($accio) {
 
     case 'perfil_cistella':
         include('vista/perfilCistella.php');
+        break;
+
+    case 'perfil_punts':
+        include('vista/perfilPunts.php');
         break;
 
     case 'buida_cistella':
@@ -60,12 +70,16 @@ switch ($accio) {
         include('vista/perfilProductes.php');
         break;
 
+    case 'eliminaProducte':
+        include('controlador/eliminaProducte.php');
+        break;
+
     case 'perfil_promos':
         include('vista/perfilPromos.php');
         break;
 
-    case 'crear_promo':
-        include('controlador/crearPromo.php');
+    case 'perfil_compres':
+        include('vista/perfilCompres.php');
         break;
 
     case 'sobre_projecte':
@@ -96,12 +110,19 @@ switch ($accio) {
         include('controlador/validacio_producte.php');
         break;
 
+    case 'afegir_promo':
+        include('controlador/afegirPromo.php');
+        break;
+
+    case 'eliminar_promo':
+        include('controlador/eliminarPromo.php');
+        break;
+
     case 'afegir_cistella':
         include('controlador/afegirCistella.php');
         break;
 
     default:
-        include('vista/inici.php');
+        require('vista/inici.php');
         break;
 }
-?>
