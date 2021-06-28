@@ -15,6 +15,12 @@
     margin: auto;
 }
 
+.close {
+    background: transparent;
+    border: none;
+    float: right;
+}
+
 .imgflex {
     display: flex;
     width: 100%;
@@ -68,7 +74,19 @@
 </style>
 
 
+<?php
 
+    if (isset($_SESSION['compra'])) {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Compra realitzada correctament.</strong> Consulta el registre de compres per a més detalls
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i data-feather="x"></i></span>
+            </button>
+        </div>';
+        unset($_SESSION['compra']);
+    }
+
+?>
 
 <div class="wrap">
    
@@ -141,7 +159,13 @@
 
 <script>
 
- 
+    setTimeout(function() {
+        jQuery(".alert").hide(200);
+    }, 5000)
+
+    jQuery(".close").click(function() {
+        jQuery(".alert").hide(200);
+    })
 
 </script>
 

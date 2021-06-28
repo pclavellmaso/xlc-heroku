@@ -344,7 +344,7 @@ h1 h2 {
 
                 <a class="navbar-brand" href="index.php">
                     <img class="logo me-lg-2 w-25" src="/XLC/vista/img/logo.png" alt="logo"></img>
-                    <span class="d-none d-lg-inline titol_header">Xarxa Local de Comerços</span>
+                    <span class="d-none d-lg-inline titol_header">Xarxa Catalana Artesania</span>
                 </a>
 
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

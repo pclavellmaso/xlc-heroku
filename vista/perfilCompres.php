@@ -48,14 +48,33 @@
                 } else {
                     $positiu = '';
                 }
+
+                // Consulta de les subcomandes
+                $cons_subComandes = "SELECT sc.producte_id FROM subcomanda sc WHERE sc.comanda_id = ".$comanda['id']."";
+                $res_subComandes = $bd->query($cons_subComandes);
+                
+                $data_subComandes = $res_subComandes->fetch_all(MYSQLI_ASSOC);
     
                 echo '<div class="comanda_wrap">
                     <div class="sup">
                         <span><strong>'.$comanda["data"].'</strong></span>
                         <span class="balanç">Balanç de punts extra / aplicats: <strong>'.$positiu . $comanda["punts_acumulats"].'</strong></span>
                         <p>Punts totals: <strong>'.$comanda["punts_usr_act"].'</strong></p>
-                    </div>
-                    <div class="inf">
+                    </div>';
+
+                    for ($i = 0; $i < count($data_subComandes); $i++) {
+
+                        // Consulta dels productes
+                        $cons_producte = "SELECT p.nom, p.preu, p.descompte FROM producte p WHERE p.id = ".$data_subComandes[$i]['producte_id']."";
+                        $res_producte = $bd->query($cons_producte);
+                        $data_producte = $res_producte->fetch_all(MYSQLI_ASSOC);
+
+                        echo '<ul>
+                            <li>'.$data_producte[0]['nom'].' | '.$data_producte[0]['descompte'].'% | '.$data_producte[0]['preu'].'€</li>
+                        </ul>';
+                    }
+
+                    echo '<div class="inf">
                         <p >Subtotal comanda: <strong>'.$comanda["total"].' €</strong></p>
                         <hr>
                     </div>

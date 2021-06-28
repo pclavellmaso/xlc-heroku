@@ -67,7 +67,7 @@ h2 {
 
 .dades_wrap {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .dades {
@@ -78,20 +78,11 @@ h2 {
 .edita {
     border: 1px solid brown;
     display: none;
-    width: 45%;
+    margin-left: 2em;
     padding: 1em;
 }
 
-.edit_right {
-    margin-left: 5em;
-}
-
 /**/
-
-.act_dades {
-    display: flex;
-    flex-wrap: wrap;
-}
 
 input {
     border: 1px solid black;
@@ -128,7 +119,7 @@ input {
         $nom = $_SESSION['nom'];
     }
 
-    $consulta = "SELECT * FROM negoci n JOIN usuari u on n.usuari_id = u.id WHERE u.nom = '".$nom."'";
+    $consulta = "SELECT n.nom, n.descripcio, n.poblacio, n.cp, n.telefon FROM negoci n, usuari u WHERE u.id = n.usuari_id and u.nom = '".$nom."'";
 
     $consulta_res = $bd->query($consulta);
 
@@ -170,26 +161,26 @@ input {
 
         <div class="edita">
 
-            <form id="form_edita" class="act_dades" action="/XLC/index.php?accio=act_dadesPersonals" method="post">
+            <form id="form_edita" class="act_dades" action="/XLC/index.php?accio=act_dadesNegoci" method="post">
 
                 <div class="edit_left">
                     <h4><strong>Nom del negoci</strong></h4>
                     <input class="dadesUsuari" type="text" name="nom" value="<?php echo $info[0]["nom"]; ?>">
 
                     <h4><strong>Descripció</strong></h4>
-                    <input class="dadesUsuari" type="text" name="correu" value="<?php echo $info[0]['correu']; ?>">
+                    <textarea style="margin-bottom: 1em;" rows="5" cols="40" name="descripcio"><?php echo $info[0]['descripcio']; ?></textarea>
 
                     <h4><strong>Població</strong></h4>
-                    <input class="dadesUsuari" type="text" name="passAct" value="<?php echo $info[0]['poblacio']; ?>">
+                    <input class="dadesUsuari" type="text" name="poblacio" value="<?php echo $info[0]['poblacio']; ?>">
                 </div>
                 
                 <div class="edit_right">
 
                     <h4><strong>Codi postal</strong></h4>
-                    <input class="dadesUsuari" type="text" name="passAct" value="<?php echo $info[0]['cp']; ?>">
+                    <input class="dadesUsuari" type="text" name="cp" value="<?php echo $info[0]['cp']; ?>">
 
                     <h4><strong>Telèfon</strong></h4>
-                    <input class="dadesUsuari" type="text" name="passAct" value="<?php echo $info[0]['telefon']; ?>">
+                    <input class="dadesUsuari" type="text" name="telefon" value="<?php echo $info[0]['telefon']; ?>">
                 </div>
 
             </form>

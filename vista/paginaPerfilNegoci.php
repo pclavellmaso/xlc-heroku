@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+h4 {
+    font-size: 1em!important;
+    margin-bottom: 0.5em!important;
+}
+
 #contentFlex {
     width: 100%;
     display: flex;
@@ -149,6 +154,7 @@ h2, h3 {
 
 .label-wrap {
     cursor: pointer;
+    display: inline;
 }
 
 </style>
@@ -166,15 +172,7 @@ h2, h3 {
         unset($_SESSION['new_promo']);
     }
 
-    if (isset($_SESSION['dades_mod'])) {
-        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Dades actualitzades!</strong> ...
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"><i data-feather="x"></i></span>
-            </button>
-        </div>';
-        unset($_SESSION['perfil_mod']);
-    }
+    
 
     if (isset($_SESSION['eliminar_promo'])) {
         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -194,6 +192,14 @@ h2, h3 {
             </button>
         </div>';
         unset($_SESSION['pass_err']);
+    } elseif (isset($_SESSION['dades_mod'])) {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Dades actualitzades!</strong> ...
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i data-feather="x"></i></span>
+            </button>
+        </div>';
+        unset($_SESSION['dades_mod']);
     }
 
 ?>
@@ -238,7 +244,7 @@ h2, h3 {
                     </br>
 
                     <div id="consul_prods" class="seccio">
-                        <h4>Consultar productes</h4>
+                        <h4>Catàleg de productes</h4>
                         <p>Consulta els productes atuals del catàleg, modifica o elimina els existents i afegeix-ne de nous</p>
                     </div>
 

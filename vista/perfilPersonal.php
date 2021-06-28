@@ -53,12 +53,12 @@ h2 {
 
 .dades_wrap {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .edita {
     display: none;
-    width: 45%;
+    margin-left: 2em;
     border: 1px solid brown;
     padding: 1em;
 }

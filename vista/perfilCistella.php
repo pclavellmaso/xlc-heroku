@@ -125,7 +125,7 @@ h2 {
 }
 
 .nom_prod {
-    font-size: 20px;
+    font-size: 1em;
     font-weight: bold;
 }
 
@@ -194,7 +194,7 @@ h2 {
 .prod_noms {
     display: inline-block;
     vertical-align: top;
-    width: 69%;
+    width: 45%;
 }
 .prod_preuFinal {
     text-align: right;
@@ -215,15 +215,15 @@ h2 {
 .prod_img {
     display: flex;
     margin-right: 0.2em;
-    width: 30%;
 }
 
 .col_qty, .prod_qty, .promo_qty {
-    width: 15%;
+    width: auto;
 }
 
 .col_preu, .prod_preu {
     width: 10%;
+    margin-left: 1em;
 }
 
 .col_descAdd, .prod_desc {
@@ -232,7 +232,7 @@ h2 {
 
 .prod_preuFinal, .col_subtotal {
     text-align: right;
-    width: 10%;
+    width: 12%;
 }
 
 .resum_compra {
@@ -242,6 +242,7 @@ h2 {
     margin-left: 5em;
     padding: 1em;
     display: flex;
+    height: max-content;
     flex-direction: column;
 }
 
@@ -264,6 +265,13 @@ h2 {
 
 .descompte {
     margin-bottom: 0em;
+}
+
+.img_nomPromo {
+    display:flex;
+    flex-wrap: wrap;
+    width: 50%;
+    width: 46%;
 }
 
 .img_nom {
@@ -465,7 +473,7 @@ h2 {
 
                                         echo '<div class="prodPromoFlex">
 
-                                            <a href="index.php?accio=pagina_producte&id='.$element['id'].'" class="img_nom">
+                                            <a href="index.php?accio=pagina_producte&id='.$element['id'].'" class="img_nomPromo">
                                                 <div class="prod_img">
                                                     <img class="foto" src="/XLC/vista/img/'.$element['imatge'].'" alt="">
                                                 </div>
@@ -619,7 +627,7 @@ h2 {
                 if ($punts_compra <= 0) {
                     $info_punts = '<span>no aconsegueixes punts extres.</span>';
                 } else {
-                    $info_punts = '<span>pots aconseguir <span style="font-weight: bold;">'.$punts_compra.'</span> punts extra.</span>';
+                    $info_punts = '<span>pots aconseguir <span style="font-weight: bold;">'.round($punts_compra).'</span> punts extra.</span>';
                 }
                 
 

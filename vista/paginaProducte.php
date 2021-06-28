@@ -181,6 +181,12 @@ label {
     margin-left: 1em;
 }
 
+.close {
+    background: transparent;
+    border: none;
+    float: right;
+}
+
 @media screen and (max-width: 414px) {
 	.add {
         margin-left: auto;
@@ -217,6 +223,16 @@ label {
     $cons_prod = "SELECT p.id, p.nom, p.descripcio, p.preu, p.imatge, p.descompte, c.nom_categoria, n.nom as nom_negoci, n.poblacio FROM producte p, categoria c, negoci n WHERE p.id = '$id' and c.id = p.categoria_id and n.id = p.negoci_id";
     $res_prod = $bd->query($cons_prod);
     $data_prod = $res_prod->fetch_all(MYSQLI_ASSOC);
+
+    if (isset($_SESSION['inc_cistella'])) {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Producte afegit a la cistella.</strong> Consulta la pàgina de la cistella per a més detalls
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i data-feather="x"></i></span>
+            </button>
+        </div>';
+        unset($_SESSION['inc_cistella']);
+    }
 
 ?>
 
@@ -433,6 +449,13 @@ label {
     app.mount("#info_compra")
 
     
+    setTimeout(function() {
+        jQuery(".alert").hide(200);
+    }, 5000)
+
+    jQuery(".close").click(function() {
+        jQuery(".alert").hide(200);
+    })
     
 
     feather.replace()

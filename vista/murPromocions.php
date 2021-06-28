@@ -93,6 +93,12 @@ p {
     margin-bottom: 3em;
 }
 
+.close {
+    background: transparent;
+    border: none;
+    float: right;
+}
+
 #cntdwn {
     color: brown!important;
     margin-left: 1em;
@@ -110,9 +116,19 @@ p {
 
 <?php
 
-    $cons_promos = "SELECT distinct p.id, n.nom, p.descompte_add, p.data_fi  FROM promocio p, usuari u, negoci n WHERE n.id = p.negoci_id";
+    $cons_promos = "SELECT distinct p.id, n.nom, p.descompte_add, p.data_fi FROM promocio p, negoci n, usuari u WHERE p.negoci_id = n.usuari_id";
     $res_promos = $bd->query($cons_promos);
     $data_promos = $res_promos->fetch_all(MYSQLI_ASSOC);
+
+    if (isset($_SESSION['inc_cistella'])) {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Promoció afegida a la cistella.</strong> Consulta la pàgina de la cistella per a més detalls
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i data-feather="x"></i></span>
+            </button>
+        </div>';
+        unset($_SESSION['inc_cistella']);
+    }
 
 ?>
 
@@ -175,87 +191,6 @@ p {
 
                         <h5>Finalitza el:</h5>
                         <p class="data_fi" data-time="<?php echo $data_promos[$i]['data_fi']; ?>" style="display: inline;"><?php echo $data_promos[$i]['data_fi']; ?></p>
-                        
-                        
-                            <!--<script>
-                                TargetDate = jQuery(".data_fi").data('time');
-                                BackColor = "palegreen";
-                                ForeColor = "navy";
-                                CountActive = true;
-                                CountStepper = -1;
-                                LeadingZero = true;
-                                DisplayFormat = "%%D%% Dies, %%H%% Hores, %%M%% Minuts, %%S%% Segons.";
-                                FinishMessage = "No disponible";
-                            </script>
-
-                            <script>
-                                
-                                counter = 1;
-
-                                function calcage(secs, num1, num2) {
-                                    
-                                    s = ((Math.floor(secs/num1))%num2).toString();
-
-                                    if (LeadingZero && s.length < 2)
-                                        s = "0" + s;
-                                    return "<b>" + s + "</b>";
-                                }
-
-                                function CountBack(secs) {
-
-                                    if (secs < 0) {
-                                        document.getElementById("cntdwn").innerHTML = FinishMessage;
-                                        return;
-                                    }
-
-                                    DisplayStr = DisplayFormat.replace(/%%D%%/g, calcage(secs,86400,100000));
-                                    DisplayStr = DisplayStr.replace(/%%H%%/g, calcage(secs,3600,24));
-                                    DisplayStr = DisplayStr.replace(/%%M%%/g, calcage(secs,60,60));
-                                    DisplayStr = DisplayStr.replace(/%%S%%/g, calcage(secs,1,60));
-
-                                    //document.getElementById("cntdwn").innerHTML = DisplayStr;
-                                    let clase = 'cntdwn' + counter.toString()
-                                    console.log('clase' + clase)
-                                    jQuery(`.${clase}`).html(DisplayStr)
-
-                                    if (CountActive) setTimeout("CountBack(" + (secs+CountStepper) + ")", SetTimeOutPeriod);
-                                }
-
-                                function putspan() {
-                                    document.write("<span id='cntdwn' class='cntdwn'></span>");
-                                    let clase = 'cntdwn' + counter.toString()
-                                    document.getElementById("cntdwn").setAttribute("class", clase)
-                                }
-
-                                
-                                if (typeof(TargetDate)=="undefined") TargetDate = "12/31/2020 5:00 AM";
-                                if (typeof(DisplayFormat)=="undefined") DisplayFormat = "%%D%% Days, %%H%% Hours, %%M%% Minutes, %%S%% Seconds.";
-                                if (typeof(CountActive)=="undefined") CountActive = true;
-                                if (typeof(FinishMessage)=="undefined") FinishMessage = "";
-                                if (typeof(CountStepper)!="number") CountStepper = -1;
-                                if (typeof(LeadingZero)=="undefined") LeadingZero = true;
-
-                                CountStepper = Math.ceil(CountStepper);
-
-                                if (CountStepper == 0) CountActive = false;
-
-                                var SetTimeOutPeriod = (Math.abs(CountStepper)-1)*1000 + 990;
-                                putspan();
-
-                                var dthen = new Date(TargetDate);
-                                var dnow = new Date();
-
-                                if(CountStepper>0)
-                                    ddiff = new Date(dnow-dthen);
-                                else
-                                    ddiff = new Date(dthen-dnow);
-
-                                gsecs = Math.floor(ddiff.valueOf()/1000);
-                                CountBack(gsecs);
-                                counter++;
-
-                            </script>-->
-                        
 
                             <?php
                                 $descompte = $data_promos[$i]['descompte_add'];
@@ -292,7 +227,17 @@ p {
 <script>
 
     $(document).ready(function(){
+
         $('.your-class').slick();
+
+        setTimeout(function() {
+            jQuery(".alert").hide(200);
+        }, 5000)
+
+        jQuery(".close").click(function() {
+            jQuery(".alert").hide(200);
+        })
+        
     });
 
 </script>

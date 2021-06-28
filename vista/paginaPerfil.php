@@ -138,6 +138,7 @@ h5 {
 
 .label-wrap {
     cursor: pointer;
+    display: inline;
 }
 
 </style>
@@ -156,16 +157,6 @@ h5 {
             </button>
         </div>';
         unset($_SESSION['new_promo']);
-    }
-
-    if (isset($_SESSION['dades_mod'])) {
-        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Dades actualitzades!</strong> ...
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"><i data-feather="x"></i></span>
-            </button>
-        </div>';
-        unset($_SESSION['perfil_mod']);
     }
 
     if (isset($_SESSION['eliminar_promo'])) {
@@ -198,19 +189,39 @@ h5 {
         unset($_SESSION['eliminar_producte']);
     }
 
+    if(isset($_SESSION['pass_err'])) {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Error a l\'actualitzar la contrasenya</strong> Contrasenya actual invàlida
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i data-feather="x"></i></span>
+            </button>
+        </div>';
+        unset($_SESSION['pass_err']);
+    } elseif (isset($_SESSION['dades_mod'])) {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Dades actualitzades!</strong> ...
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i data-feather="x"></i></span>
+            </button>
+        </div>';
+        unset($_SESSION['dades_mod']);
+    }
+
+    if (isset($_SESSION['dades_NegociMod'])) {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Dades actualitzades!</strong> ...
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i data-feather="x"></i></span>
+            </button>
+        </div>';
+        unset($_SESSION['dades_NegociMod']);
+    }
+
 ?>
 
 <div id="contentFlex">
 
     <div id="leftFlex">
-
-        <?php
-            
-            if(isset($_SESSION['pass_err']) && $_SESSION['pass_err'] == 'yes') {
-
-                echo '<p style="color: red;">Error a l\'actualitzar la contrasenya: Contrasenya actual invàlida</p>';
-            }
-        ?>
 
         <div class="label-wrap">
             <i data-feather="menu"></i><span id="select-label" class="menu">MENÚ</span><br><br>
@@ -253,7 +264,7 @@ h5 {
                     </div>
                     
                     <div id="consul_proms" class="seccio">
-                        <h4>Promocions</h4>
+                        <h4>Consultar promocions</h4>
                         <p>Consulta les promocions actives i creen de noves.</p>
                     </div>
 
