@@ -241,7 +241,7 @@ label {
     <div class="prodFlex row">
 
         <div class="esquerre col-12 col-md-3">
-            <img class="mb-4 mb-md-0" src="/XLC/vista/img/<?php echo $data_prod[0]['imatge']; ?>" alt="">
+            <img class="mb-4 mb-md-0" src="vista/img/<?php echo $data_prod[0]['imatge']; ?>" alt="">
         </div>
 
         <div class="dreta col-12 col-md-9">

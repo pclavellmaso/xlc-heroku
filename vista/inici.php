@@ -116,7 +116,7 @@
 
                                 <div class="background">
                                 <div class="prod_amunt">
-                                    <img class="foto" src="/XLC/vista/img/'.$prod['imatge'].'" alt="">
+                                    <img class="foto" src="vista/img/'.$prod['imatge'].'" alt="">
                                 </div>
                                 <div class="prod_abaix">
                                     <div class=info>

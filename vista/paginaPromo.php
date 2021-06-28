@@ -140,7 +140,7 @@ img {
                         <div class="background d-flex">
 
                         <div class="col-12 col-md-2">
-                            <img src="/XLC/vista/img/'.$data_infoProd[0]["imatge"].'" alt="">
+                            <img src="vista/img/'.$data_infoProd[0]["imatge"].'" alt="">
                         </div>
 
                         <div class="col-12 col-md-10 m-3">

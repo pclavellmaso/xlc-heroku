@@ -158,7 +158,7 @@ p {
 
                         <?php for ($k = 0; $k < count($data_subpromo); $k++) { ?>
 
-                            <img src="/XLC/vista/img/<?php echo $data_subpromo[$k]['imatge']; ?>" alt="">
+                            <img src="vista/img/<?php echo $data_subpromo[$k]['imatge']; ?>" alt="">
                         <?php } ?>
 
                     </div>

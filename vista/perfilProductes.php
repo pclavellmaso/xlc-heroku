@@ -193,7 +193,7 @@ select, .afegirProd {
 
             <div class="prodFlex">
 
-                <img class="prod_img" src="/XLC/vista/img/<?php echo $prods[$i]['imatge']; ?>" alt="prod_img"></img>
+                <img class="prod_img" src="vista/img/<?php echo $prods[$i]['imatge']; ?>" alt="prod_img"></img>
                 <div class="back">
                     <div class="edit_wrap">
                         <p class="edit_mod">Edita</p>

@@ -365,7 +365,7 @@ h6 {
 
                                 <label v-on:click="mod(data_prod['nom'], data_prod['id'])" class="label_prod" v-bind:for="i">
                                     <div class="flex_img">
-                                        <img :src="'/XLC/vista/img/' + data_prod['imatge']">
+                                        <img :src="'vista/img/' + data_prod['imatge']">
                                     </div>
                                     
                                     <div class="right">

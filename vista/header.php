@@ -343,7 +343,7 @@ h1 h2 {
             <div class="container-fluid">
 
                 <a class="navbar-brand" href="index.php">
-                    <img class="logo me-lg-2 w-25" src="/XLC/vista/img/logo.png" alt="logo"></img>
+                    <img class="logo me-lg-2 w-25" src="vista/img/logo.png" alt="logo"></img>
                     <span class="d-none d-lg-inline titol_header">Xarxa Catalana Artesania</span>
                 </a>
 
@@ -359,7 +359,7 @@ h1 h2 {
                                     echo '<div class="menu_usuari">
                                     
                                         <div class="cistella">
-                                            <img class="cistella_icon" src="/XLC/vista/img/cistella.png" alt="">
+                                            <img class="cistella_icon" src="vista/img/cistella.png" alt="">
                                             <div class="cistella_info">'.$_SESSION["cistella"]["qty"].'</div>
                                         </div>
                                         <div class="usuari">'.ucfirst($_SESSION['nom'][0]).'</div>

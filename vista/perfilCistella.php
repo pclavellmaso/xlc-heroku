@@ -475,7 +475,7 @@ h2 {
 
                                             <a href="index.php?accio=pagina_producte&id='.$element['id'].'" class="img_nomPromo">
                                                 <div class="prod_img">
-                                                    <img class="foto" src="/XLC/vista/img/'.$element['imatge'].'" alt="">
+                                                    <img class="foto" src="vista/img/'.$element['imatge'].'" alt="">
                                                 </div>
                                                 <div class="prod_noms">
                                                     <p class="nom_prod">'.ucfirst($element['nom']).'</p>
@@ -515,7 +515,7 @@ h2 {
                                 <a class="img_nom" href="index.php?accio=pagina_producte&id='.$prod['id'].'">
                                     
                                     <div class="prod_img">
-                                        <img class="foto" src="/XLC/vista/img/'.$prod['imatge'].'" alt="">
+                                        <img class="foto" src="vista/img/'.$prod['imatge'].'" alt="">
                                     </div>
                                     <div class="prod_noms">
                                         <p class="nom_prod">'.ucfirst($prod['nom']).'</p>
